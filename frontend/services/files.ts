@@ -12,7 +12,8 @@ export async function dataUrl(file: File) { return new Promise<string>((resolve,
 export async function readSource(file: File) { if (!['application/pdf', 'image/png', 'image/jpeg'].includes(file.type))
     throw Error('Upload PDF, PNG, JPG or JPEG.'); if (file.size > 10 * 1024 * 1024)
     throw Error('Maximum file size is 10 MB.'); const url = await dataUrl(file); if (file.type === 'application/pdf') {
-    const doc = await pdfjs.getDocument({ data: await file.arrayBuffer() }).promise;
+    const task = pdfjs.getDocument({ data: await file.arrayBuffer() });
+    const doc = await task.promise;
     try {
         const page = await doc.getPage(1), vp = page.getViewport({ scale: 1.3 }), canvas = document.createElement('canvas');
         canvas.width = vp.width;
@@ -22,7 +23,7 @@ export async function readSource(file: File) { if (!['application/pdf', 'image/p
         return { dataUrl: url, preview: canvas.toDataURL('image/png'), text: text.items.filter(i => 'str' in i).map(i => 'str' in i ? i.str : '').join('\n'), pages: doc.numPages };
     }
     finally {
-        await doc.destroy();
+        await task.destroy();
     }
 } const image = new Image(); image.src = url; try {
     await image.decode();
