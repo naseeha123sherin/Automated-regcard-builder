@@ -45,7 +45,10 @@ export default function App() {
         };
     }).modelContext; if (!context)
         return; const life = new AbortController(); try {
-        context.registerTool({ name: 'read_regcard_validation', description: 'Read output validation without changing the project.', inputSchema: { type: 'object', properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true, untrustedContentHint: true }, execute: () => ({ valid: generated.valid, rdl: generated.rdl, issues: generated.issues }) }, { signal: life.signal });
+        context.registerTool({ name: 'read_regcard_validation', description: 'Read output validation without changing the project.', inputSchema: { type: 'object', properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true, untrustedContentHint: true }, execute: (input:unknown) => {
+          if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).length)throw Error('Validation tool requires an empty object.');
+          return { valid: generated.valid, rdl: generated.rdl, issues: generated.issues };
+        } }, { signal: life.signal });
     }
     catch { /* Optional browser capability. */ } return () => life.abort(); }, [generated]);
     async function upload(file?: File) { if (!file)
