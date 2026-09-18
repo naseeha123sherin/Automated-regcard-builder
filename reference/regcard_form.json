@@ -1,0 +1,218 @@
+{
+    "rows" : [
+        {
+            "fields" : [
+                {
+                    "field_type": "line-separator"
+                }
+            ]
+        },       
+        {
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+        {
+            "fields" : [
+				{
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "fullname",
+                    "field_label": "Guest Name"
+                },
+                {
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "confirmationNo",
+                    "field_label": "Confirmation Number"
+                }
+            ]
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+        {
+            "fields" : [
+				{
+                    "field_type": "input-text",
+                    "is_enabled": true,
+					"is_mandatory": true,
+                    "field_name": "email",
+                    "field_label": "Email"
+					
+                },
+				{
+                    "field_type": "input-text",
+                    "is_enabled": true,
+					"is_mandatory": true,
+                    "field_name": "phoneNumber",
+                    "field_label": "Phone Number"
+				}
+                
+            ]
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+        {
+            "fields" : [
+                {
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "address1",
+                    "field_label": "Address"
+                }
+			]				
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+		{
+            "fields" : [
+				{
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "companyName",
+                    "field_label": "Company"
+                },
+				{
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "reservationGroup",
+                    "field_label": "Group"
+                }
+                
+            ]
+        },
+		
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+        {
+            "fields" : [
+                {
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "arrivalDate",
+                    "field_label": "Arrival Date"
+                },
+				{
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "departureDate",
+                    "field_label": "Departure Date"
+                }
+			]				
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+        {
+            "fields" : [       
+				{
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "adultCount",
+                    "field_label": "Number of Adults"
+                },
+                {
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "childCount",
+                    "field_label": "Number of child"
+                }
+            ]
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+        {
+            "fields" : [       
+				{
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "roomNumber",
+                    "field_label": "Room Number"
+                },
+                {
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "roomType",
+                    "field_label": "Room Type"
+                },
+				{
+                    "field_type": "input-text",
+                    "is_enabled": false,
+                    "field_name": "roomRate",
+                    "field_label": "Room Rate"
+                }
+            ]
+        },
+		
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-separator"
+                }
+            ]
+        },
+        {
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "20"
+                }
+            ]
+        }
+    ]
+}
+

@@ -1,0 +1,30 @@
+{
+  "rows": [
+	{
+            "fields" : [
+						{
+							"field_type": "line-break",
+							"field_value": "16"
+						}
+					]
+        },	
+		{
+			"fields": [
+				{
+					"field_type": "text",
+					"field_value": "By signing below, I hereby agree to be held personally liable for all costs and charges relating to the above referenced reservation including, without limitation, the total room rate and any incidental charges (collectively, 'Charges').  I further agree to be held personally liable for any and all claims, demands, damages, liabilities, expenses, losses of every nature and kind (collectively), 'Claims') arising out of the intentional or negligent acts or omissions of any guest staying at or visiting the Hotel in connection with the above-referenced reservation. I hereby authorize the Hotel to charge the credit or debit card on file with the Hotel for any and all Charges and/or Claims, and I certify that I am an authorized user of such credit or debit card and will not dispute any Charges or Claims with my bank or credit card company.  Money, jewelry, precious stones and other valuables brought to the Hotel are at my sole risk and the Hotel does not accept these items for safekeeping. Pursuant to §509.111, Florida Statues, the Hotel is not liable for any loss and damage thereto. Such items should not be left unattended anywhere on Hotel property, including in the Hotel room and/or any in-room safe, under any circumstances. In the event I wish for the Hotel to store any of my personal belongings in the Hotel's safety box, I hereby agree to make such request to the front desk in writing (which request may be declined in Hotel's sole discretion) and provide Hotel with an inventory of such items and the value thereof.  The Setai is a non-smoking hotel. Smoking is only permitted in designated open areas. In case of smoking indoors, I understand and agree that the Hotel may charge my debit or credit card a minimum fee of $500 daily for deep cleaning.  I have read and understand all terms and conditions described above and agree to comply with foregoing terms and conditions and all other rules and regulations applicable to guests at the Hotel."
+				}
+			]
+		},
+		
+		{
+			"fields": [
+				{
+					"field_type": "line-break",
+					"field_value": "10"
+				}
+			]
+		}
+
+  ]
+}

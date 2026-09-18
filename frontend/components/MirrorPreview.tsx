@@ -1,0 +1,18 @@
+import { useRef, useState } from 'react';
+import { clone, fields, type Project } from '../../shared/model';
+import { nextScreen } from '../../shared/project';
+import ConfigPreview, { PropertyHeader } from './ConfigPreview';
+export default function MirrorPreview({ project, onUpdate }: {
+    project: Project;
+    onUpdate: (p: Project) => void;
+}) { const [error, setError] = useState(''), [signed, setSigned] = useState(false), canvas = useRef<HTMLCanvasElement>(null), drawing = useRef(false); const screen = project.previewScreen; function advance() { if (screen === 'registration') {
+    const missing = fields(project.regcardConfig).find(f => f.is_mandatory && f.is_enabled && !project.previewSampleData[f.field_name || '']?.trim());
+    if (missing) {
+        setError(`Enter ${missing.field_label}.`);
+        return;
+    }
+} if (screen === 'signature' && !signed) {
+    setError('Draw a preview signature first.');
+    return;
+} setError(''); onUpdate({ ...project, previewScreen: nextScreen(screen) }); } return <><div className="toolbar"><div className="segmented">{(['portrait', 'landscape'] as const).map(o => <button className={project.orientation === o ? 'selected' : ''} onClick={() => onUpdate({ ...project, orientation: o })} key={o}>{o}</button>)}</div><select aria-label="Preview screen" value={screen} onChange={e => onUpdate({ ...project, previewScreen: e.target.value as Project['previewScreen'] })}>{['registration', 'terms', 'signature', 'checkout'].map(s => <option key={s}>{s}</option>)}</select><span className="muted">Sample values only · no production guest data</span></div><div className={`tablet ${project.orientation}`}><div className="tablet-top"><button onClick={() => onUpdate({ ...project, previewScreen: 'registration' })}>‹ Back</button><span>Mirror</span><span>▢</span></div><div className="tablet-content">{screen === 'registration' ? <><PropertyHeader project={project}/><ConfigPreview config={project.regcardConfig} values={project.previewSampleData} onChange={(name, value) => { const q = clone(project); q.previewSampleData[name] = value; onUpdate(q); }}/></> : screen === 'terms' ? <><h3 className="center">Terms and Conditions</h3><ConfigPreview config={project.checkinTermsConfig}/></> : screen === 'signature' ? <><h3>Guest signature</h3><p>This signature is only part of the interactive preview.</p><canvas ref={canvas} width={600} height={200} className="signature" onPointerDown={e => { drawing.current = true; e.currentTarget.setPointerCapture(e.pointerId); const r = e.currentTarget.getBoundingClientRect(), ctx = e.currentTarget.getContext('2d')!; ctx.beginPath(); ctx.moveTo((e.clientX - r.left) * 600 / r.width, (e.clientY - r.top) * 200 / r.height); }} onPointerMove={e => { if (!drawing.current)
+    return; const r = e.currentTarget.getBoundingClientRect(), ctx = e.currentTarget.getContext('2d')!; ctx.lineWidth = 2; ctx.lineTo((e.clientX - r.left) * 600 / r.width, (e.clientY - r.top) * 200 / r.height); ctx.stroke(); setSigned(true); }} onPointerUp={() => drawing.current = false} onPointerCancel={() => drawing.current = false}/><button onClick={() => { canvas.current?.getContext('2d')?.clearRect(0, 0, 600, 200); setSigned(false); }}>Clear signature</button></> : <div className="checkout"><PropertyHeader project={project}/><ConfigPreview config={project.checkoutTermsConfig}/></div>}</div><div className="tablet-bottom">{error && <span role="alert">{error}</span>}<button onClick={() => { setError(''); onUpdate({ ...project, previewScreen: 'registration' }); }}>Cancel</button><button className="gold" onClick={advance}>{screen === 'registration' ? 'Done' : screen === 'terms' ? 'Sign' : screen === 'signature' ? 'Confirm signature' : 'Restart'}</button></div></div></>; }

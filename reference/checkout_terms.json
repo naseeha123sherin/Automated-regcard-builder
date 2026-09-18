@@ -1,0 +1,56 @@
+{
+    "rows": 
+	[
+		{
+            "fields": [
+                {
+                    "field_type": "text",
+                    "field_value": "Thank you for Staying with Us."
+                }
+            ]
+        },
+		{
+            "fields": [
+                {
+                    "field_type": "line-break",
+                    "field_value": "12"
+                }
+            ]
+        },
+		{
+            "fields": [
+                {
+                    "field_type": "text",
+                    "field_value": "The Setai, Miami Beach"
+                }
+            ]
+        },
+		{
+            "fields": [
+                {
+                    "field_type": "line-break",
+                    "field_value": "10"
+                }
+            ]
+        },
+		{
+            "fields": [
+                {
+                    "field_type": "text",
+                    "field_value": "The LEADING HOTELS OF THE WORLD"
+                }
+            ]
+        },
+		{
+            "fields" : [
+                {
+                    "field_type": "line-break",
+                    "field_value": "16"
+                }
+            ]
+        }
+		
+			
+	]
+}
+
