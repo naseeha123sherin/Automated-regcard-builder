@@ -42,12 +42,13 @@ export function analyzePdfLayout(page:PdfPage):Analysis {
  for(const g of page.geometry){const n=normalizedBounds(g,page);if(n.width<.0001&&n.height<.0001)continue;elements.push({id:`shape_${elements.length}`,kind:g.kind,...n,fontSize:9,bold:false,align:'Left',lineWidth:g.lineWidth??.5,borderColor:g.borderColor||'#000000',background:g.background,imageReviewed:g.kind==='image'?false:undefined});}
  const rectangles=elements.filter(e=>e.kind==='rectangle'&&e.width<.035&&e.height<.03);
  const checkboxTexts=textRuns.filter(t=>rectangles.some(r=>Math.abs(r.y-t.y/page.height)<.02&&t.x/page.width>r.x&&t.x/page.width<r.x+.16));
+ const uniqueCheckboxTexts=checkboxTexts.filter((t,i,list)=>list.findIndex(o=>normalizeLabel(o.text)===normalizeLabel(t.text)&&Math.abs(o.x-t.x)<Math.max(3,t.width*.08)&&Math.abs(o.y-t.y)<Math.max(3,t.height*.35))===i);
  const checkboxLabels=checkboxTexts.map(t=>t.text);
  const all=textRuns.map(t=>t.text).join('\n');let start=textRuns.findIndex(t=>/liability information|terms (and|&) conditions|would you like to receive/i.test(t.text));
  if(start<0)start=textRuns.findIndex(t=>/^by signing|^i agree that|^important:/i.test(t.text));
  const termsY=start<0?Infinity:textRuns[start].y/page.height;
- const checkboxes=checkboxTexts.map(t=>{const y=t.y/page.height,isTerms=y>=termsY||/agree|consent|promotion|questionnaire|acknowledge|privacy/i.test(t.text);const mapped=/smoking|smoker/i.test(t.text)?'isSmoking':mapLabels([t.text])[0].fieldName||undefined;return {label:t.text,section:isTerms?'TERMS_AND_CONDITIONS' as const:'REGCARD_DETAILS' as const,mappedField:isTerms?undefined:mapped,confidence:isTerms||mapped?.length?0.94:0.68,x:t.x/page.width,y};});
- const terms=start<0?[]:textRuns.slice(start).filter(t=>t.y/page.height<.89&&!checkboxTexts.includes(t)&&!/signature|contact information|name of accompanying|postal|^email:|^phone:|^address:|^city:|^prov/i.test(t.text)).map(t=>t.text);
+ const checkboxes=uniqueCheckboxTexts.map(t=>{const y=t.y/page.height,isTerms=y>=termsY||/agree|consent|promotion|questionnaire|acknowledge|privacy|offers?/i.test(t.text);const mapped=/smoking|smoker/i.test(t.text)?'isSmoking':mapLabels([t.text])[0].fieldName||undefined;return {label:t.text,section:isTerms?'TERMS_AND_CONDITIONS' as const:'REGCARD_DETAILS' as const,mappedField:isTerms?undefined:mapped,confidence:isTerms||mapped?.length?0.94:0.68,x:t.x/page.width,y};});
+ const terms=start<0?[]:textRuns.slice(start).filter(t=>t.y/page.height<.89&&!uniqueCheckboxTexts.includes(t)&&!/signature|contact information|name of accompanying|postal|^email:|^phone:|^address:|^city:|^prov/i.test(t.text)).map(t=>t.text);
  let propertyName='',propertyNameConfidence=0;
  const domain=/\b(?:www\.)?([a-z][a-z0-9-]+)\.(?:com|mv|ae)\b/i.exec(all);
  const heading=textRuns.find(t=>t.y/page.height<.1&&/hotel|resort|maldives|montage|setai/i.test(t.text));

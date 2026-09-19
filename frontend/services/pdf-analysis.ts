@@ -36,8 +36,12 @@ export async function localPdfAnalysis(page:PdfPage,preview:string):Promise<Anal
  const a=analyzePdfLayout(page);
  for(const e of a.elements.filter(e=>e.kind==='image')){
   const signature=a.elements.find(t=>t.kind==='text'&&/signature/i.test(t.text||'')&&Math.abs(t.y-e.y)<.05);
-  if(signature){a.elements=a.elements.filter(t=>t.id!==e.id);a.warnings.push('Source guest-signature image omitted. Add an approved Signature dynamic field if required.');continue;}
-  const image=await cropLogo(preview,e);e.imageData=image.dataUrl;e.imageReviewed=false;
+ if(signature){a.elements=a.elements.filter(t=>t.id!==e.id);a.warnings.push('Source guest-signature image omitted. Add an approved Signature dynamic field if required.');continue;}
+  const image=await cropLogo(preview,e);e.imageData=image.dataUrl;
+  // Header artwork is the hotel's logo/brand mark in the supplied matched pair.
+  // It is safe to reconstruct automatically after signature regions are removed.
+  e.imageReviewed=e.y<.18;
+  if(!e.imageReviewed)a.warnings.push('A non-header image was detected and left out of RDL until reviewed.');
  }
  return a;
 }
