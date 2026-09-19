@@ -3,7 +3,8 @@ import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import JSZip from 'jszip';
 import { extractPdfPage, localPdfAnalysis } from './pdf-analysis';
 pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
-export function download(name: string, content: string | Blob, mime = 'application/json') { const url = URL.createObjectURL(content instanceof Blob ? content : new Blob([content], { type: mime })); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+export function downloadTextFile({filename,content,mimeType='text/plain;charset=utf-8'}:{filename:string;content:string|Blob;mimeType?:string}) { if(typeof content==='string'&&!content.length)throw Error('Generated file is empty.');const blob=content instanceof Blob?content:new Blob([content],{type:mimeType});const url=URL.createObjectURL(blob);const anchor=document.createElement('a');anchor.href=url;anchor.download=filename;anchor.style.display='none';document.body.appendChild(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),10_000); }
+export function download(name:string,content:string|Blob,mime='application/json'){downloadTextFile({filename:name,content,mimeType:mime});}
 export async function createZipBlob(files: {
     name: string;
     content: string;

@@ -45,6 +45,8 @@ export function analyzePdfLayout(page:PdfPage):Analysis {
  const checkboxLabels=checkboxTexts.map(t=>t.text);
  const all=textRuns.map(t=>t.text).join('\n');let start=textRuns.findIndex(t=>/liability information|terms (and|&) conditions|would you like to receive/i.test(t.text));
  if(start<0)start=textRuns.findIndex(t=>/^by signing|^i agree that|^important:/i.test(t.text));
+ const termsY=start<0?Infinity:textRuns[start].y/page.height;
+ const checkboxes=checkboxTexts.map(t=>{const y=t.y/page.height,isTerms=y>=termsY||/agree|consent|promotion|questionnaire|acknowledge|privacy/i.test(t.text);const mapped=/smoking|smoker/i.test(t.text)?'isSmoking':mapLabels([t.text])[0].fieldName||undefined;return {label:t.text,section:isTerms?'TERMS_AND_CONDITIONS' as const:'REGCARD_DETAILS' as const,mappedField:isTerms?undefined:mapped,confidence:isTerms||mapped?.length?0.94:0.68,x:t.x/page.width,y};});
  const terms=start<0?[]:textRuns.slice(start).filter(t=>t.y/page.height<.89&&!checkboxTexts.includes(t)&&!/signature|contact information|name of accompanying|postal|^email:|^phone:|^address:|^city:|^prov/i.test(t.text)).map(t=>t.text);
  let propertyName='',propertyNameConfidence=0;
  const domain=/\b(?:www\.)?([a-z][a-z0-9-]+)\.(?:com|mv|ae)\b/i.exec(all);
@@ -53,5 +55,5 @@ export function analyzePdfLayout(page:PdfPage):Analysis {
  if(page.pages>1)warnings.push(`${page.pages} PDF pages detected. This design covers page 1; review remaining pages before export.`);
  if(page.geometry.some(g=>g.kind==='image'))warnings.push('Image areas detected. Approve static artwork only; do not embed a source guest signature.');
  if(!terms.length)warnings.push('No terms region detected. Supply the current property terms, not reference legal text.');
- return {propertyName,propertyNameConfidence,orientation:page.width>page.height?'landscape':'portrait',elements,detectedLabels:[],terms,checkboxLabels,warnings};
+ return {propertyName,propertyNameConfidence,orientation:page.width>page.height?'landscape':'portrait',elements,detectedLabels:[],terms,checkboxLabels,checkboxes,warnings};
 }

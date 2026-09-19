@@ -23,7 +23,7 @@ export function generateRdl(p:Project):string {
    const name=`Image_${i}`,mime=e.imageData.startsWith('data:image/jpeg')?'image/jpeg':'image/png';embedded.push({name,mime,data:e.imageData.split(',')[1]});
    return {layer:1,xml:`<Image Name="${name}"><Source>Embedded</Source><Value>${name}</Value><Sizing>FitProportional</Sizing>${pos}<Style/></Image>`};
   }
-  const value=e.kind==='dynamic'?lookup(e.fieldName||''):(e.text||'');
+  const value=e.kind==='dynamic'?(e.expression||(e.fieldName?lookup(e.fieldName):'')):(e.text||'');
   return {layer:2,xml:`<Textbox Name="Textbox_${i}"><CanGrow>false</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>${escapeXml(value)}</Value><Style><FontFamily>${escapeXml(e.fontFamily||'Arial')}</FontFamily><FontSize>${e.fontSize}pt</FontSize><FontWeight>${e.bold?'Bold':'Normal'}</FontWeight><FontStyle>${e.italic?'Italic':'Normal'}</FontStyle><Color>${e.color||'#000000'}</Color></Style></TextRun></TextRuns><Style><TextAlign>${e.align}</TextAlign></Style></Paragraph></Paragraphs>${pos}<Style><VerticalAlign>Top</VerticalAlign><PaddingLeft>0pt</PaddingLeft><PaddingRight>0pt</PaddingRight><PaddingTop>0pt</PaddingTop><PaddingBottom>0pt</PaddingBottom></Style></Textbox>`};
  }).sort((a,b)=>a.layer-b.layer).map(x=>x.xml).join('');
  let logo='';

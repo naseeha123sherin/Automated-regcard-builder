@@ -17,6 +17,6 @@ export function mapLabels(labels: string[], c?: Config): Mapping[] {
    const v = candidates.includes(n) ? .97 : candidates.some(s => s.length > 4 && (n.includes(s) || s.includes(n))) ? .62 : 0;
    if (v > score) { best = name; score = v; }
   }
-  return { id: `mapping_${i}`, detectedLabel: label, detectedValue: '', fieldName: best, fieldLabel: label, confidence: score, status: score >= .9 ? 'suggested' : 'requires_review', expression: best ? lookup(best) : '' };
+  return { id: `mapping_${i}`, detectedLabel: label, detectedValue: '', fieldName: best, fieldLabel: label, confidence: score, status: best ? 'confirmed' : 'requires_review', expression: best ? lookup(best) : '' };
  });
 }
