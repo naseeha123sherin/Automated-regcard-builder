@@ -1,0 +1,122 @@
+{
+  "rows": [
+	{
+            "fields" : [
+						{
+							"field_type": "line-break",
+							"field_value": "16"
+						}
+					]
+        },	
+		{
+			"fields": [
+				{
+					"field_type": "text",
+					"field_value": "Would You Like to Receive Exclusive Updates and Offers?"
+				}
+			]
+		},
+		{
+            "fields" : [
+						{
+							"field_type": "line-break",
+							"field_value": "16"
+						}
+					]
+        },	
+		
+		{
+      "fields": [
+        {
+          "field_type": "checkbox",
+          "field_name": "check_box1",
+          "field_label": "Yes, please sign me up to receive updates and offers from Montage International and its family of companies",
+          "field_value": "false",
+          "is_mandatory": false,
+          "is_enabled": true
+           }
+		 ]
+		},
+		{
+            "fields" : [
+						{
+							"field_type": "line-break",
+							"field_value": "16"
+						}
+					]
+        },	
+		
+		{
+      "fields": [
+        {
+          "field_type": "checkbox",
+          "field_name": "check_box2",
+          "field_label": "Yes, please sign me up to receive residential related updates and offers from our business partner.",
+          "field_value": "false",
+          "is_mandatory": false,
+          "is_enabled": true
+        }]},
+		{
+            "fields" : [
+						{
+							"field_type": "line-break",
+							"field_value": "16"
+						}
+					]
+        },	
+		
+		{
+      "fields": [
+        {
+          "field_type": "checkbox",
+          "field_name": "check_box3",
+          "field_label": "Please note you can subscribe at any time.",
+          "field_value": "false",
+          "is_mandatory": false,
+          "is_enabled": true
+        }]},
+		{
+            "fields" : [
+						{
+							"field_type": "line-break",
+							"field_value": "16"
+						}
+					]
+        },	
+		{
+			"fields": [
+				{
+					"field_type": "text",
+					"field_value": "To learn more about how we use personal data, visit us online at montagehotels.com/privacy-policy."
+				}
+			]
+		},
+		{
+            "fields" : [
+						{
+							"field_type": "line-break",
+							"field_value": "16"
+						}
+					]
+        },	
+		{
+			"fields": [
+				{
+					"field_type": "text",
+					"field_value": "I agree that my liability for this bill, any charges incurred or any damages caused by me at the Hotel is not waived and agree to be held personally liable in the event that the indicated person, company, group, association or other party fails to pay for all or any part or the full amount of these charges, costs or damages. If I do not check out at the desk, I authorize the Hotel to process all charges incurred during the stay to the credit card I presented at time of check-in or previously on file. The Hotel assumes no responsibility for items left in the room, including, but not limited to, loss of money, jewels, or other valuables nor shall the Hotel be liable for any damage caused by me or my guests. The Hotel is smoke-free property. Our non-smoking policy will apply to all areas of the Hotel with the exception of designated smoking areas (if any). A minimum $500.00 nightly cleaning fee will be applied for smoking in guest rooms or elsewhere in the Hotel"
+				}
+			]
+		},
+		
+		{
+			"fields": [
+				{
+					"field_type": "line-break",
+					"field_value": "10"
+				}
+			]
+		}
+
+  ]
+}
+

@@ -1,0 +1,1314 @@
+[
+  {
+    "source": "Registration Card 1.PDF",
+    "sha256": "81c6427ef42c92d21c84b8ecf8307e29df435ea4f331a9da2e1af7fede8ac8ac",
+    "referenceRdl": "RegCardTemplate.rdl",
+    "referenceFields": [
+      "Fullname",
+      "SignatureImagePath",
+      "address1",
+      "adultCount",
+      "arrivalDate",
+      "childCount",
+      "companyName",
+      "confirmationNo",
+      "departureDate",
+      "email",
+      "noOfNights",
+      "phoneNumber",
+      "reservationGroup",
+      "roomNumber",
+      "roomRate",
+      "roomType"
+    ],
+    "page": {
+      "width": 612.0,
+      "height": 792.0,
+      "texts": [
+        {
+          "text": "GUEST INFORMATION",
+          "x": 36.9,
+          "y": 133.4749999999999,
+          "width": 96.39899999999997,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Guest Name:",
+          "x": 50.4,
+          "y": 158.55399999999997,
+          "width": 52.98299999999998,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Sample Guest",
+          "x": 144.9,
+          "y": 158.55399999999997,
+          "width": 77.976,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Phone:",
+          "x": 306.9,
+          "y": 158.55399999999997,
+          "width": 28.502999999999986,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "0000000000",
+          "x": 401.4,
+          "y": 158.55399999999997,
+          "width": 67.76999999999998,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "United States",
+          "x": 144.9,
+          "y": 170.61199999999997,
+          "width": 53.982,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Address:",
+          "x": 50.4,
+          "y": 172.95399999999995,
+          "width": 35.49599999999999,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Email:",
+          "x": 306.9,
+          "y": 172.95399999999995,
+          "width": 24.98399999999998,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "sample@example.test",
+          "x": 401.4,
+          "y": 172.95399999999995,
+          "width": 134.154,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Company:",
+          "x": 306.9,
+          "y": 187.35399999999993,
+          "width": 41.00400000000002,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Group:",
+          "x": 306.9,
+          "y": 201.7539999999999,
+          "width": 27.495000000000005,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Confirmation No:",
+          "x": 306.9,
+          "y": 216.154,
+          "width": 67.48200000000003,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "DEMO-100",
+          "x": 401.4,
+          "y": 216.154,
+          "width": 45.036,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "STAY INFORMATION",
+          "x": 36.9,
+          "y": 241.27499999999998,
+          "width": 88.90200000000002,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Room Number:",
+          "x": 50.4,
+          "y": 264.55499999999995,
+          "width": 60.99299999999999,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "101",
+          "x": 144.9,
+          "y": 264.55499999999995,
+          "width": 20.01599999999999,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Room Rate:",
+          "x": 306.9,
+          "y": 264.55499999999995,
+          "width": 47.988,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "250.00 USD",
+          "x": 401.4,
+          "y": 264.55499999999995,
+          "width": 56.492999999999995,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Arrival Date:",
+          "x": 50.4,
+          "y": 278.95399999999995,
+          "width": 49.47299999999999,
+          "height": 9.000000000000057,
+          "fontSize": 9.000000000000057,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "01-01-27",
+          "x": 144.9,
+          "y": 278.95399999999995,
+          "width": 36.018,
+          "height": 9.000000000000057,
+          "fontSize": 9.000000000000057,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Room Type:",
+          "x": 306.9,
+          "y": 278.95399999999995,
+          "width": 48.98700000000002,
+          "height": 9.000000000000057,
+          "fontSize": 9.000000000000057,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "One Bedroom Ocean View Suite",
+          "x": 401.4,
+          "y": 278.95399999999995,
+          "width": 129.96900000000005,
+          "height": 9.000000000000057,
+          "fontSize": 9.000000000000057,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Departure Date:",
+          "x": 50.4,
+          "y": 293.354,
+          "width": 63.98999999999999,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "01-03-27",
+          "x": 144.9,
+          "y": 293.354,
+          "width": 36.018,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Guests:",
+          "x": 306.9,
+          "y": 293.354,
+          "width": 30.987000000000023,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "2 / 0",
+          "x": 401.4,
+          "y": 293.354,
+          "width": 17.487000000000023,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Number of Nights:",
+          "x": 50.4,
+          "y": 307.754,
+          "width": 72.47699999999998,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "2",
+          "x": 144.9,
+          "y": 307.754,
+          "width": 5.003999999999991,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "LIABILITY INFORMATION",
+          "x": 36.9,
+          "y": 348.069,
+          "width": 118.20999999999998,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "By signing below, I hereby agree to be held personally liable for all costs and charges relating to the above referenced reservation including,",
+          "x": 44.1,
+          "y": 373.46500000000003,
+          "width": 494.6319999999996,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "without limitation, the total room rate and any incidental charges (collectively, \"Charges\"). I further agree to be held personally liable for any and all",
+          "x": 44.1,
+          "y": 384.18300000000005,
+          "width": 518.4399999999996,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "claims, demands, damages, liabilities, expenses, losses of every nature and kind (collectively), \"Claims\") arising out of the intentional or negligent",
+          "x": 44.1,
+          "y": 394.901,
+          "width": 513.1359999999997,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "acts or omissions of any guest staying at or visiting the Hotel in connection with the above-referenced reservation. I hereby authorize the Hotel to",
+          "x": 44.1,
+          "y": 405.619,
+          "width": 511.4559999999997,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "charge the credit or debit card on file with the Hotel for any and all Charges and/or Claims, and I certify that I am an authorized user of such credit",
+          "x": 44.1,
+          "y": 416.33700000000005,
+          "width": 514.0719999999998,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "or debit card and will not dispute any Charges or Claims with my bank or credit card company. Money, jewelry, precious stones and other",
+          "x": 44.1,
+          "y": 427.055,
+          "width": 487.02399999999966,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "valuables brought to the Hotel are at my sole risk and the Hotel does not accept these items for safekeeping. Pursuant to \u00a7509.111, Florida",
+          "x": 44.1,
+          "y": 437.773,
+          "width": 491.4639999999996,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Statues, the Hotel is not liable for any loss and damage thereto. Such items should not be left unattended anywhere on Hotel property, including in",
+          "x": 44.1,
+          "y": 448.49100000000004,
+          "width": 516.7999999999996,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "the Hotel room and/or any in-room safe, under any circumstances. In the event I wish for the Hotel to store any of my personal belongings in the",
+          "x": 44.1,
+          "y": 459.209,
+          "width": 508.32799999999975,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Hotel's safety box, I hereby agree to make such request to the front desk in writing (which request may be declined in Hotel's sole discretion) and",
+          "x": 44.1,
+          "y": 469.927,
+          "width": 511.83199999999977,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "provide Hotel with an inventory of such items and the value thereof. The Setai is a non-smoking hotel. Smoking is only permitted in designated",
+          "x": 44.1,
+          "y": 480.64500000000004,
+          "width": 505.05899999999997,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "open areas. In case of smoking indoors, I understand and agree that the Hotel may charge my debit or credit card a minimum fee of $500 daily for",
+          "x": 44.1,
+          "y": 491.363,
+          "width": 515.8199999999999,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "deep cleaning. I have read and understand all terms and conditions described above and agree to comply with foregoing terms and conditions",
+          "x": 44.1,
+          "y": 502.081,
+          "width": 503.99999999999966,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "and all other rules and regulations applicable to guests at the Hotel.",
+          "x": 44.1,
+          "y": 512.8,
+          "width": 238.6400000000003,
+          "height": 8.0,
+          "fontSize": 8.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "If any of the contact information above is incorrect or incomplete, please fill out the area below.",
+          "x": 36.9,
+          "y": 536.917,
+          "width": 376.3980000000001,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Name of Accompanying Guest:",
+          "x": 36.9,
+          "y": 550.314,
+          "width": 138.31000000000003,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Address:",
+          "x": 36.9,
+          "y": 571.914,
+          "width": 39.43999999999999,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "City:",
+          "x": 36.9,
+          "y": 593.514,
+          "width": 19.980000000000004,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Prov. / State:",
+          "x": 269.401,
+          "y": 593.514,
+          "width": 57.71999999999997,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Postal / Zip Code:",
+          "x": 393.11,
+          "y": 593.514,
+          "width": 79.39999999999998,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Email:",
+          "x": 36.9,
+          "y": 615.114,
+          "width": 27.759999999999998,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Phone:",
+          "x": 322.108,
+          "y": 615.114,
+          "width": 31.670000000000016,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Guest Signature:",
+          "x": 43.478,
+          "y": 671.394,
+          "width": 74.98000000000002,
+          "height": 10.0,
+          "fontSize": 10.0,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "2001 Collins Avenue | Miami Beach, Florida 33139 | T: 305-520-6000 | F: 305-520-6600 | www.thesetaihotel.com",
+          "x": 81.2,
+          "y": 761.392,
+          "width": 449.27100000000024,
+          "height": 9.0,
+          "fontSize": 9.0,
+          "fontFamily": "Arial",
+          "bold": false
+        }
+      ],
+      "geometry": [
+        {
+          "kind": "rectangle",
+          "x": 31.5,
+          "y": 126.904,
+          "width": 544.5,
+          "height": 19.350000000000023
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.5,
+          "y": 236.50400000000002,
+          "width": 544.5,
+          "height": 15.75
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.5,
+          "y": 342.504,
+          "width": 544.5,
+          "height": 18.0
+        },
+        {
+          "kind": "line",
+          "x": 31.5,
+          "y": 252.00400000000002,
+          "width": 544.5,
+          "height": 0.5
+        },
+        {
+          "kind": "line",
+          "x": 31.5,
+          "y": 146.00400000000002,
+          "width": 544.5,
+          "height": 0.5
+        },
+        {
+          "kind": "line",
+          "x": 31.5,
+          "y": 520.807,
+          "width": 544.5,
+          "height": 0.5
+        },
+        {
+          "kind": "line",
+          "x": 31.5,
+          "y": 360.254,
+          "width": 544.5,
+          "height": 0.5
+        },
+        {
+          "kind": "rectangle",
+          "x": 316.208,
+          "y": 610.724,
+          "width": 1.0,
+          "height": 22.599999999999994
+        },
+        {
+          "kind": "rectangle",
+          "x": 263.501,
+          "y": 589.125,
+          "width": 1.0,
+          "height": 22.599999999999994
+        },
+        {
+          "kind": "rectangle",
+          "x": 575.498,
+          "y": 532.867,
+          "width": 1.0,
+          "height": 14.057999999999993
+        },
+        {
+          "kind": "line",
+          "x": 575.748,
+          "y": 545.925,
+          "width": 0.5,
+          "height": 87.399
+        },
+        {
+          "kind": "rectangle",
+          "x": 387.21,
+          "y": 589.125,
+          "width": 1.0,
+          "height": 22.599999999999994
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.0,
+          "y": 532.867,
+          "width": 1.0,
+          "height": 100.457
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.0,
+          "y": 632.3240000000001,
+          "width": 545.248,
+          "height": 1.0
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.0,
+          "y": 589.125,
+          "width": 545.248,
+          "height": 1.0
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.0,
+          "y": 545.925,
+          "width": 545.498,
+          "height": 1.0
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.0,
+          "y": 532.867,
+          "width": 545.498,
+          "height": 1.0
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.0,
+          "y": 610.7239999999999,
+          "width": 545.248,
+          "height": 1.0
+        },
+        {
+          "kind": "rectangle",
+          "x": 31.0,
+          "y": 567.524,
+          "width": 545.248,
+          "height": 1.0
+        },
+        {
+          "kind": "line",
+          "x": 130.5,
+          "y": 681.152,
+          "width": 189.0,
+          "height": 0.5
+        },
+        {
+          "kind": "image",
+          "x": 248.7,
+          "y": 703.823,
+          "width": 114.59999999999997,
+          "height": 54.519999999999996
+        }
+      ],
+      "pages": 1
+    }
+  },
+  {
+    "source": "Regcardsample2.pdf",
+    "sha256": "563f83b210a0618444573f16ca3e29420ac66798001c017113d6ae5a9fb92063",
+    "referenceRdl": "RegCardTemplate2.rdlc",
+    "referenceFields": [
+      "Fullname",
+      "SignatureImagePath",
+      "address",
+      "arrivalDate",
+      "check_box1",
+      "check_box2",
+      "check_box3",
+      "city",
+      "country",
+      "departureDate",
+      "email",
+      "firstname",
+      "nationality",
+      "paymentType",
+      "phoneNumber",
+      "roomNumber",
+      "roomRate",
+      "roomType"
+    ],
+    "page": {
+      "width": 595.276,
+      "height": 841.89,
+      "texts": [
+        {
+          "text": "Sample Guest",
+          "x": 26.284,
+          "y": 87.574793,
+          "width": 52.509165,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Phone Number:",
+          "x": 285.268,
+          "y": 85.77479299999993,
+          "width": 63.01999699999999,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "0000000000",
+          "x": 394.564,
+          "y": 87.574793,
+          "width": 50.03444000000002,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Arrival Date:",
+          "x": 26.284,
+          "y": 165.406793,
+          "width": 49.50349900000001,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "01-01-27",
+          "x": 135.22,
+          "y": 165.406793,
+          "width": 36.013998000000015,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Departure Date:",
+          "x": 286.924,
+          "y": 165.406793,
+          "width": 64.01888600000001,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "01-03-27",
+          "x": 395.86,
+          "y": 165.406793,
+          "width": 36.013998000000015,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Room Type:",
+          "x": 26.284,
+          "y": 188.37479299999995,
+          "width": 49.008554,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Room:",
+          "x": 286.924,
+          "y": 188.37479299999995,
+          "width": 26.502054999999984,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Daily Rate:$",
+          "x": 27.508,
+          "y": 214.79879299999993,
+          "width": 49.00855400000002,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "The following daily rate changes apply during your stay:",
+          "x": 27.868,
+          "y": 237.838793,
+          "width": 221.5733780000001,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Daily Resort Fee: $75.00",
+          "x": 27.868,
+          "y": 300.262793,
+          "width": 99.52894000000002,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Payment Type",
+          "x": 27.004,
+          "y": 323.08679300000006,
+          "width": 58.016553,
+          "height": 8.998999999999967,
+          "fontSize": 8.998999999999967,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "AX",
+          "x": 135.22,
+          "y": 323.08679300000006,
+          "width": 12.004665999999986,
+          "height": 8.998999999999967,
+          "fontSize": 8.998999999999967,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Billing",
+          "x": 27.868,
+          "y": 344.110793,
+          "width": 24.00033300000001,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Email Address:",
+          "x": 26.284,
+          "y": 362.110793,
+          "width": 60.50927600000001,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "sample@example.test",
+          "x": 135.652,
+          "y": 363.83879299999995,
+          "width": 109.15787,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "If any of the contact information above is incorrect or incomplete, please fill out the area below.",
+          "x": 67.252,
+          "y": 387.23779299999995,
+          "width": 418.4881469999999,
+          "height": 9.999000000000024,
+          "fontSize": 9.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Name:",
+          "x": 24.628,
+          "y": 412.15079299999996,
+          "width": 26.502055000000006,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Sample Guest",
+          "x": 101.884,
+          "y": 413.66279299999997,
+          "width": 52.50916500000001,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Telephone:",
+          "x": 294.556,
+          "y": 412.15079299999996,
+          "width": 45.021997,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "0000000000",
+          "x": 371.812,
+          "y": 413.66279299999997,
+          "width": 50.03444000000002,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Address:",
+          "x": 24.628,
+          "y": 429.214793,
+          "width": 35.51005400000001,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "City:",
+          "x": 294.556,
+          "y": 429.214793,
+          "width": 17.99799999999999,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "State:",
+          "x": 24.628,
+          "y": 447.214793,
+          "width": 23.514387000000006,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Zip Code:",
+          "x": 243.724,
+          "y": 446.20679299999995,
+          "width": 39.01066499999996,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Country:",
+          "x": 356.188,
+          "y": 445.990793,
+          "width": 34.00722099999996,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "United States of America",
+          "x": 404.5,
+          "y": 447.502793,
+          "width": 99.52894000000003,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Guest has agreed to supplemental room upsell fee of the below amount (per night plus taxes):",
+          "x": 24.484,
+          "y": 484.870793,
+          "width": 374.14242399999995,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Would You Like to Receive Exclusive Updates and Offers?",
+          "x": 138.028,
+          "y": 534.621793,
+          "width": 277.83221400000014,
+          "height": 9.999000000000024,
+          "fontSize": 9.999000000000024,
+          "fontFamily": "Arial",
+          "bold": true
+        },
+        {
+          "text": "Yes, please sign me up to receive updates and offers from Montage International and its family of companies.",
+          "x": 72.364,
+          "y": 558.022793,
+          "width": 435.65958799999964,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Yes, please sign me up to receive residential related updates and offers from our business partner.",
+          "x": 93.388,
+          "y": 580.5587929999999,
+          "width": 393.1393129999999,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Please note you can subscribe at any time.",
+          "x": 201.028,
+          "y": 601.511793,
+          "width": 152.500935,
+          "height": 7.99899999999991,
+          "fontSize": 7.998999999999995,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "To learn more about how we use personal data, visit us online at montagehotels.com/privacy-policy.",
+          "x": 85.324,
+          "y": 621.095793,
+          "width": 381.4003190000002,
+          "height": 7.999000000000024,
+          "fontSize": 7.998999999999995,
+          "fontFamily": "Arial",
+          "bold": true
+        },
+        {
+          "text": "I agree that my liability for this bill, any charges incurred or any damages caused by me at the Hotel is not waived and agree",
+          "x": 24.268,
+          "y": 644.998793,
+          "width": 493.16319799999974,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "to be held personally liable in the event that the indicated person, company, group, association or other party fails to pay for",
+          "x": 24.268,
+          "y": 655.006793,
+          "width": 490.6974719999996,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "all or any part or the full amount of these charges, costs or damages. If I do not check out at the desk, I authorize the Hotel to",
+          "x": 24.268,
+          "y": 665.0147929999999,
+          "width": 497.21274799999935,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "process all charges incurred during the stay to the credit card I presented at time of check-in or previously on file. The Hotel",
+          "x": 24.268,
+          "y": 675.022793,
+          "width": 490.65247699999964,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "assumes no responsibility for items left in the room, including, but not limited to, loss of money, jewels, or other valuables nor",
+          "x": 24.268,
+          "y": 685.0307929999999,
+          "width": 496.1418669999995,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "shall the Hotel be liable for any damage caused by me or my guests. The Hotel is smoke-free property. Our non-smoking",
+          "x": 24.268,
+          "y": 695.0387929999999,
+          "width": 483.1383119999998,
+          "height": 8.999000000000024,
+          "fontSize": 8.999000000000024,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "policy will apply to all areas of the Hotel with the exception of designated smoking areas (if any). A minimum $500.00 nightly",
+          "x": 24.268,
+          "y": 705.046793,
+          "width": 492.6502549999998,
+          "height": 8.999000000000024,
+          "fontSize": 8.99900000000001,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "cleaning fee will be applied for smoking in guest rooms or elsewhere in the Hotel.",
+          "x": 24.268,
+          "y": 715.054793,
+          "width": 322.59615199999985,
+          "height": 8.999000000000024,
+          "fontSize": 8.998999999999995,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "Signature",
+          "x": 83.308,
+          "y": 772.2937929999999,
+          "width": 46.11538800000001,
+          "height": 9.999000000000024,
+          "fontSize": 9.999000000000002,
+          "fontFamily": "Arial",
+          "bold": true
+        },
+        {
+          "text": "30801 South Coast Highway - Laguna Beach, CA 92651 - Phone (949) 715-6000 - Fax (949) 715-6100",
+          "x": 47.596,
+          "y": 804.924793,
+          "width": 455.7544199999995,
+          "height": 9.99899999999991,
+          "fontSize": 9.998999999999999,
+          "fontFamily": "Arial",
+          "bold": false
+        },
+        {
+          "text": "www.montagelagunabeach.com",
+          "x": 205.78,
+          "y": 816.084793,
+          "width": 142.265772,
+          "height": 9.999000000000024,
+          "fontSize": 9.999000000000002,
+          "fontFamily": "Arial",
+          "bold": false
+        }
+      ],
+      "geometry": [
+        {
+          "kind": "line",
+          "x": 369.802,
+          "y": 426.21,
+          "width": 162.88199999999995,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 156.918,
+          "y": 799.568,
+          "width": 228.24,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 99.92,
+          "y": 426.187,
+          "width": 177.163,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 99.92,
+          "y": 442.19399999999996,
+          "width": 177.163,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 370.302,
+          "y": 442.19399999999996,
+          "width": 161.92899999999997,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 99.92,
+          "y": 459.202,
+          "width": 143.35699999999997,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 290.583,
+          "y": 459.202,
+          "width": 60.764999999999986,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 402.516,
+          "y": 459.00399999999996,
+          "width": 128.757,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 4.502,
+          "y": 79.33699999999999,
+          "width": 586.272,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 4.502,
+          "y": 79.33699999999999,
+          "width": 0.0,
+          "height": 722.179
+        },
+        {
+          "kind": "line",
+          "x": 4.502,
+          "y": 801.516,
+          "width": 586.272,
+          "height": 0.0
+        },
+        {
+          "kind": "line",
+          "x": 590.774,
+          "y": 79.33699999999999,
+          "width": 0.0,
+          "height": 722.179
+        },
+        {
+          "kind": "rectangle",
+          "x": 24.976,
+          "y": 555.054,
+          "width": 14.466000000000001,
+          "height": 10.408000000000015
+        },
+        {
+          "kind": "rectangle",
+          "x": 22.3,
+          "y": 531.498,
+          "width": 512.519,
+          "height": 84.667
+        },
+        {
+          "kind": "rectangle",
+          "x": 24.976,
+          "y": 577.553,
+          "width": 14.466000000000001,
+          "height": 10.407999999999987
+        },
+        {
+          "kind": "image",
+          "x": 156.918,
+          "y": 750.81,
+          "width": 228.23900000000003,
+          "height": 48.75800000000001
+        },
+        {
+          "kind": "image",
+          "x": 206.949,
+          "y": 17.746999999999957,
+          "width": 116.53300000000002,
+          "height": 53.0
+        }
+      ],
+      "pages": 2
+    }
+  }
+]

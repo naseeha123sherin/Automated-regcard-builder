@@ -1,35 +1,3 @@
-import { describe, it } from 'node:test';
-import assert from 'node:assert/strict';
-import { ReferenceTemplateService } from '../shared/templates';
-import { clone, fields } from '../shared/model';
-import { newProject, setProperty, setTerms, serializeProject, deserializeProject, nextScreen, acceptMapping, effectiveElements } from '../shared/project';
-import { mapLabels } from '../shared/mapping';
-import { generateRdl, validateRdl, lookup } from '../shared/rdl';
-import { generateFiles } from '../shared/generation';
-import { parseConfig, validateConfig } from '../shared/validation';
-import { validateUpload, ManualProvider } from '../backend/analysis';
-const service = new ReferenceTemplateService(), t = service.load();
-describe('Native verification (same production services)', () => {
-    it('canonical template loading and cloning', () => { const c = service.loadRegcardTemplate(); c.rows.pop(); assert.deepEqual(service.loadRegcardTemplate(), t.regcard); assert(t.checkin.rows.length); assert(t.checkout.rows.length); });
-    it('field labels and identifiers preserved with multilingual text', () => { const p = newProject(t); p.fieldMappings = mapLabels(['Guest Name / اسم الضيف'], t.regcard); const q = acceptMapping(p, p.fieldMappings[0].id); assert.equal(fields(q.regcardConfig).find(f => f.field_name === 'fullname')?.field_label, 'Guest Name / اسم الضيف'); assert.deepEqual(fields(q.regcardConfig).map(f => f.field_name), fields(t.regcard).map(f => f.field_name)); });
-    it('unknown mapping requires human review without insertion', () => { const p = newProject(t); p.fieldMappings = mapLabels(['Flight Number'], t.regcard); assert.equal(p.fieldMappings[0].fieldName, null); assert.equal(p.fieldMappings[0].status, 'requires_review'); assert.throws(() => acceptMapping(p, p.fieldMappings[0].id)); assert.deepEqual(p.regcardConfig, t.regcard); });
-    it('suggested mappings never silently confirmed', () => assert.equal(mapLabels(['Room No.'], t.regcard)[0].status, 'suggested'));
-    it('regcard generation preserves canonical structure', () => assert.deepEqual(JSON.parse(generateFiles(newProject(t), t).files[1].content), t.regcard));
-    it('check-in terms preserve exact wording', () => { const s = 'Terms §\n\nExact wording / الشروط'; assert.equal(fields(setTerms(t.checkin, s)).find(f => f.field_type === 'text')?.field_value, s); });
-    it('checkout replacement and sanitized names', () => { const p = setProperty(newProject(t), 'W Maldives'); assert.equal(fields(p.checkoutTermsConfig).filter(f => f.field_type === 'text')[1].field_value, 'W Maldives'); assert.equal(generateFiles(p, t).files[0].name, 'W_Maldives_RegistrationCard.rdl'); });
-    it('inherited reference legal and branding text cleared', () => { const p = newProject(t); assert(!JSON.stringify(p.checkinTermsConfig).includes('Florida')); assert(!JSON.stringify(p.checkoutTermsConfig).includes('Setai')); });
-    it('real RDL XML parses and has required dimensions/dataset', () => { const p = newProject(t), s = generateRdl(p); assert(s.includes('<PageWidth>19in</PageWidth>')); assert(s.includes('<PageHeight>24in</PageHeight>')); assert(s.includes('DataSet Name="DataSet1"')); assert(validateRdl(s, p).valid); });
-    it('exact Lookup pattern and dynamic counts', () => { const p = newProject(t), v = validateRdl(generateRdl(p), p); assert.equal(lookup('roomNumber'), '=Lookup("roomNumber", Fields!FieldName.Value, Fields!FieldValue.Value, "DataSet1")'); assert.equal(v.actualLookupCount, effectiveElements(p).filter(e => e.kind === 'dynamic').length); assert.equal(v.actualLookupCount, v.expectedLookupCount); });
-    it('manual added field changes Lookup count dynamically', () => { const p = newProject(t); p.regcardConfig.rows.push({ fields: [{ field_type: 'input-text', field_name: 'flightNumber', field_label: 'Flight Number' }] }); assert.equal(validateRdl(generateRdl(p), p).actualLookupCount, fields(p.regcardConfig).filter(f => f.field_name).length); });
-    it('rejects corrupt RDL, incorrect dimensions and dataset', () => { const p = newProject(t), s = generateRdl(p); for (const bad of [s.replace('</Report>', ''), s.replace('19in', '18in'), s.replaceAll('DataSet1', 'BadSet'), s.replace('=Lookup(&quot;fullname&quot;, Fields!FieldName.Value, Fields!FieldValue.Value, &quot;DataSet1&quot;)', '{{fullname}}')])
-        assert(!validateRdl(bad, p).valid); });
-    it('genuine embedded proportional logo image', () => { const p = newProject(t); p.logo = { mime: 'image/png', dataUrl: 'data:image/png;base64,iVBORw0KGgo=' }; const s = generateRdl(p); assert(s.includes('<Image Name="PropertyLogo">')); assert(s.includes('<Sizing>FitProportional</Sizing>')); assert(validateRdl(s, p).valid); });
-    it('JSON missing field and duplicate location diagnostics', () => { const c = clone(t.regcard); c.rows.push({ fields: [{ field_type: 'input-text' }, { field_type: 'input-text', field_name: 'fullname' }] }); const i = validateConfig(c, 'regcard'); assert(i.some(x => x.path.includes('field_name'))); assert(i.some(x => x.message.includes('Duplicate'))); });
-    it('invalid JSON and wrong rows fail intentionally', () => { assert.throws(() => parseConfig('{bad', 'regcard')); assert.throws(() => parseConfig('{"rows":2}', 'regcard')); });
-    it('portrait orientation serialized in shared model', () => { const p = newProject(t); p.orientation = 'portrait'; assert.deepEqual(deserializeProject(serializeProject(p)), p); });
-    it('preview navigation flow', () => { assert.equal(nextScreen('registration'), 'terms'); assert.equal(nextScreen('terms'), 'signature'); assert.equal(nextScreen('signature'), 'checkout'); assert.equal(nextScreen('checkout'), 'registration'); });
-    it('project serialization validates imports', () => assert.throws(() => deserializeProject('{}')));
-    it('export readiness enforces reviews', () => { let p = newProject(t); assert(!generateFiles(p, t).valid); p = setProperty(p, 'Current Hotel'); p.checkinTermsConfig = setTerms(p.checkinTermsConfig, 'Exact reviewed terms'); p.termsReviewed = true; assert(generateFiles(p, t).valid); });
-    it('upload validation catches MIME spoofing and corruption', () => { assert.throws(() => validateUpload({ name: 'bad.pdf', mime: 'application/pdf', dataUrl: 'data:application/pdf;base64,YmFk' })); assert.throws(() => validateUpload({ name: 'bad.png', mime: 'image/png', dataUrl: 'data:image/jpeg;base64,YmFk' })); });
-    it('no-credentials provider never fabricates success', async () => assert.rejects(new ManualProvider().analyzeRegistrationCard(), /not configured/));
-});
+import {describe,it} from 'node:test';
+import {invariantSuite} from './invariants';
+describe('Production invariant and reference-pair verification',()=>invariantSuite((name,fn)=>it(name,fn)));

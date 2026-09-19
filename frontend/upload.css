@@ -1,0 +1,1 @@
+.upload-options{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:22px 0}.upload-options .file-label{border:1px solid #d8e2de;border-radius:7px;padding:16px;background:#f8fbfa}.file-label span{display:block;color:#647b73;font-weight:400}@media(max-width:650px){.upload-options{grid-template-columns:1fr}}
