@@ -1,7 +1,7 @@
 import { DOMParser } from '@xmldom/xmldom';
 import { validateXmlClosure } from './xml';
 
-const LOOKUP = /^=Lookup\("([A-Za-z_][A-Za-z0-9_]*)",\s*Fields!FieldName\.Value,\s*Fields!FieldValue\.Value,\s*"DataSet1"\)$/;
+const LOOKUP = /^=Lookup\("([A-Za-z_][A-Za-z0-9_]*)",[\s\S]*,\s*"DataSet1"\)$/;
 export function discoverRdlFields(xml:string):string[]{
  if(/<!DOCTYPE|<!ENTITY/i.test(xml))throw Error('DTD/entity declarations are forbidden.');
  const closure=validateXmlClosure(xml);if(closure)throw Error(`Invalid RDL XML: ${closure}`);
