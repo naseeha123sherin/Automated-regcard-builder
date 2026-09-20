@@ -2,10 +2,22 @@ import { clone, type Project, type Templates } from './model';
 import { safeName } from './project';
 import { generateRdl, validateRdl } from './rdl';
 import { checkinReadiness, checkoutReadiness, rdlReadiness, validateConfig, type Issue } from './validation';
+
 export type GeneratedFile={key:'rdl'|'regcard'|'checkin'|'checkout';name:string;content:string;mime:string;valid:boolean;issues:Issue[];status:string};
 const errors=(x:Issue[])=>x.some(i=>i.severity==='error');
 const jsonIssues=(content:string,kind:'regcard'|'checkin'|'checkout',reference?:Templates['regcard']):Issue[]=>{try{return validateConfig(JSON.parse(content),kind,reference);}catch(e){return [{path:'JSON',message:(e as Error).message,severity:'error'}];}};
-export function generateFiles(p: Project, t: Templates) { const xml = generateRdl(p), rdl = validateRdl(xml, p), prefix = safeName(p.propertyName), reg=JSON.stringify(clone(p.regcardConfig),null,2), checkin=JSON.stringify(clone(p.checkinTermsConfig),null,2), checkout=JSON.stringify(clone(p.checkoutTermsConfig),null,2);
- const blocking=new Set(['XML parses','XML closure','Report namespace','Report Builder root order','Report Builder data source order','Report Builder field order','Page dimensions','DataSet1','Dataset fields','Report structure']);const rdlIssues=[...rdlReadiness(p),...rdl.checks.filter(c=>!c.pass).map(c=>({path:c.name,message:c.detail||'RDL validation warning.',severity:blocking.has(c.name)?'error' as const:'warning' as const}))],regIssues=jsonIssues(reg,'regcard',t.regcard),checkinIssues=[...jsonIssues(checkin,'checkin').map(i=>({...i,severity:'warning' as const})),...checkinReadiness(p).map(i=>({...i,severity:'warning' as const}))],checkoutIssues=[...jsonIssues(checkout,'checkout').map(i=>({...i,severity:'warning' as const})),...checkoutReadiness(p).map(i=>({...i,severity:'warning' as const}))];
- const rdlDownloadable=xml.trim().length>0&&!errors(rdlIssues);const files:GeneratedFile[]=[{key:'rdl',name:`${prefix?prefix+'_':''}RegistrationCard.rdl`,content:xml,mime:'application/xml',valid:rdlDownloadable,issues:rdlIssues,status:rdlIssues.length?'Generated with warnings':'Generated'},{key:'regcard',name:`${prefix?prefix+'_':''}regcard.json`,content:reg,mime:'application/json',valid:!!reg,issues:regIssues,status:'Ready'},{key:'checkin',name:`${prefix?prefix+'_':''}checkin_terms.json`,content:checkin,mime:'application/json',valid:!!checkin,issues:checkinIssues,status:'Ready'},{key:'checkout',name:`${prefix?prefix+'_':''}checkout_terms.json`,content:checkout,mime:'application/json',valid:!!checkout,issues:checkoutIssues,status:'Ready'}];
- const issues=files.flatMap(f=>f.issues);return {rdl,issues,valid:files.every(f=>f.valid),files}; }
+
+export function generateFiles(p:Project,t:Templates){
+ const xml=generateRdl(p),rdl=validateRdl(xml,p),prefix=safeName(p.propertyName),reg=JSON.stringify(clone(p.regcardConfig),null,2),checkin=JSON.stringify(clone(p.checkinTermsConfig),null,2),checkout=JSON.stringify(clone(p.checkoutTermsConfig),null,2);
+ const blocking=new Set(['XML parses','XML closure','Report namespace','Report Builder root order','Report Builder data source order','Report Builder field order','Page dimensions','DataSet1','Dataset fields','Report structure','Empty ReportItems','ReportItem types','Unique item names']);
+ const rdlIssues=[...rdlReadiness(p),...rdl.checks.filter(c=>!c.pass).map(c=>({path:c.name,message:c.detail||'RDL validation warning.',severity:blocking.has(c.name)?'error' as const:'warning' as const}))];
+ const regIssues=jsonIssues(reg,'regcard',t.regcard),checkinIssues=[...jsonIssues(checkin,'checkin').map(i=>({...i,severity:'warning' as const})),...checkinReadiness(p).map(i=>({...i,severity:'warning' as const}))],checkoutIssues=[...jsonIssues(checkout,'checkout').map(i=>({...i,severity:'warning' as const})),...checkoutReadiness(p).map(i=>({...i,severity:'warning' as const}))];
+ const rdlDownloadable=xml.trim().length>0&&!errors(rdlIssues);
+ const files:GeneratedFile[]=[
+  {key:'rdl',name:`${prefix?prefix+'_':''}RegistrationCard.rdl`,content:xml,mime:'application/xml;charset=utf-8',valid:rdlDownloadable,issues:rdlIssues,status:rdlIssues.length?'Generated with warnings':'Generated'},
+  {key:'regcard',name:`${prefix?prefix+'_':''}regcard.json`,content:reg,mime:'application/json',valid:!!reg,issues:regIssues,status:'Ready'},
+  {key:'checkin',name:`${prefix?prefix+'_':''}checkin_terms.json`,content:checkin,mime:'application/json',valid:!!checkin,issues:checkinIssues,status:'Ready'},
+  {key:'checkout',name:`${prefix?prefix+'_':''}checkout_terms.json`,content:checkout,mime:'application/json',valid:!!checkout,issues:checkoutIssues,status:'Ready'}
+ ];
+ const issues=files.flatMap(f=>f.issues);return {rdl,issues,valid:files.every(f=>f.valid),files};
+}
