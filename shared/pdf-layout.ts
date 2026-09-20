@@ -20,12 +20,13 @@ export function analyzePdfLayout(page:PdfPage):Analysis {
   if(consumed.has(t))continue;const info=labelInfo(t.text);
   if(info){
    const labelWidth=info.inline?Math.min(t.width,t.width*info.label.length/t.text.length):t.width;addText(t,info.label,labelWidth);
-   const next=textRuns.find(o=>o!==t&&!consumed.has(o)&&Math.abs(o.y-t.y)<4&&o.x>=t.x+t.width-1);
-   const nextLabel=next&&labelInfo(next.text);const value=info.inline||(!nextLabel&&next&&next.x-t.x-t.width<page.width*.3?next.text:'');
-   const x=info.inline?t.x+labelWidth+3:next&&!nextLabel?next.x:t.x+t.width+6;
-   const boundary=nextLabel?next!.x:(t.x<page.width*.45?page.width*.47:page.width*.94);
-   const box={...t,x,width:Math.max(12,value?info.inline?t.width-labelWidth:next!.width:boundary-x),height:Math.max(t.height*1.25,10)};
-   addDynamic(box,info.label,info.m.fieldName!,value);if(next&&value&&!info.inline)consumed.add(next);continue;
+   const sameRow=textRuns.filter(o=>o!==t&&!consumed.has(o)&&Math.abs(o.y-t.y)<4&&o.x>=t.x+t.width-1).sort((a,b)=>a.x-b.x),next=sameRow[0],nextLabel=next&&labelInfo(next.text);
+   const nextColumnLabel=textRuns.filter(o=>o!==t&&Math.abs(o.y-t.y)<Math.max(6,t.height*.7)&&o.x>t.x+t.width&&labelInfo(o.text)).sort((a,b)=>a.x-b.x)[0];
+   const cellRight=nextColumnLabel?.x??Math.min(page.width*.96,t.x+Math.max(t.width*4,page.width*.26));
+   const below=textRuns.filter(o=>o!==t&&!consumed.has(o)&&o.y>t.y+2&&o.y-t.y<Math.max(42,page.height*.065)&&o.x+o.width/2>=t.x-4&&o.x+o.width/2<cellRight&&!labelInfo(o.text)&&o.text.length<90&&!/^(business|leisure|cash|credit card|company|direct bill)$/i.test(o.text.trim())).sort((a,b)=>(a.y-b.y)||Math.abs((a.x+a.width/2)-(t.x+t.width/2))-Math.abs((b.x+b.width/2)-(t.x+t.width/2)))[0];
+   const sample=info.inline?undefined:(!nextLabel&&next&&next.x-t.x-t.width<page.width*.3?next:below),value=info.inline||sample?.text||'';
+   const box=info.inline?{...t,x:t.x+labelWidth+3,width:Math.max(12,t.width-labelWidth),height:Math.max(t.height*1.25,10)}:sample?{...sample,width:Math.max(sample.width,Math.min(cellRight-sample.x,page.width*.28))}:{...t,x:t.x+t.width+6,width:Math.max(12,cellRight-(t.x+t.width+6)),height:Math.max(t.height*1.25,10)};
+   addDynamic(box,info.label,info.m.fieldName!,value);if(sample)consumed.add(sample);continue;
   }
   // Split the commonly printed combined adults / children value without copying it as static text.
   if(normalizeLabel(t.text).startsWith('guests')){
