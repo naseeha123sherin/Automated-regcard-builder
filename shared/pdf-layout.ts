@@ -51,6 +51,44 @@ export function analyzePdfLayout(page:PdfPage):Analysis {
  const checkboxRunSet=new Set(uniqueCheckboxTexts);
  const checkboxes=uniqueCheckboxTexts.map(t=>{const y=t.y/page.height,isTerms=y>=termsY||/agree|consent|promotion|questionnaire|acknowledge|privacy|offers?|invoice|quick check.?out/i.test(t.text);const nearby=textRuns.filter(o=>o!==t&&!checkboxRunSet.has(o)&&o.x<t.x&&Math.abs(o.y-t.y)<Math.max(8,t.height*1.2)).sort((a,b)=>b.x-a.x)[0];const above=textRuns.filter(o=>o!==t&&!checkboxRunSet.has(o)&&o.y<t.y&&t.y-o.y<45&&o.x<t.x+t.width&&o.x+o.width>t.x-160&&!/terms|conditions/i.test(o.text)).sort((a,b)=>b.y-a.y)[0];const groupLabel=(nearby?.text||above?.text||'').replace(/[:：]\s*$/,'').trim()||undefined;const groupMap=groupLabel?mapLabels([groupLabel])[0].fieldName||undefined:undefined;const mapped=/smoking|smoker/i.test(t.text)?'isSmoking':groupMap||mapLabels([t.text])[0].fieldName||undefined;return {label:t.text,groupLabel,section:isTerms?'TERMS_AND_CONDITIONS' as const:'REGCARD_DETAILS' as const,mappedField:isTerms?undefined:mapped,confidence:isTerms||mapped?.length?0.94:0.68,x:t.x/page.width,y};});
  const terms=start<0?[]:textRuns.slice(start).filter(t=>t.y/page.height<.89&&!uniqueCheckboxTexts.includes(t)&&!/signature|contact information|name of accompanying|postal|^email:|^phone:|^address:|^city:|^prov/i.test(t.text)).map(t=>t.text);
+ // PDF text extraction commonly returns one run per printed legal line. Keep a
+ // continuous prose block editable as one Report Builder textbox, not a stack
+ // of independent textboxes that drift apart when wording changes.
+ if(start>=0){
+  const prose=textRuns.filter(t=>t.y>=textRuns[start].y&&t.y/page.height<.95&&
+   !consumed.has(t)&&!uniqueCheckboxTexts.includes(t)&&
+   (t.width>=page.width*.45||t.text.trim().length>=75));
+  const groups:PdfText[][]=[];
+  for(const t of prose){
+   const group=groups[groups.length-1],prev=group?.[group.length-1];
+   if(prev&&t.y-prev.y<=Math.max(prev.height,t.height)*1.8&&Math.abs(t.x-prev.x)<=page.width*.08)group.push(t);
+   else groups.push([t]);
+  }
+  for(const group of groups.filter(g=>g.length>=2)){
+   // The final printed line is often shorter than the full-width lines above it.
+   for(;;){
+    const prev=group[group.length-1];
+    const next=textRuns.find(t=>t.y>prev.y&&t.y-prev.y<=Math.max(t.height,prev.height)*1.8&&
+     Math.abs(t.x-prev.x)<=page.width*.08&&!group.includes(t)&&!consumed.has(t)&&
+     !uniqueCheckboxTexts.includes(t)&&t.text.trim().length>=15&&!labelInfo(t.text));
+    if(!next)break;
+    group.push(next);
+   }
+   const source=group.map(t=>elements.find(e=>e.kind==='text'&&e.text===t.text&&Math.abs(e.x-t.x/page.width)<.001&&Math.abs(e.y-t.y/page.height)<.001));
+   if(source.some(e=>!e))continue;
+   const first=group[0],last=group[group.length-1];
+   const heading=textRuns.find(t=>t.y<first.y&&first.y-(t.y+t.height)<=Math.max(first.height,t.height)*1.3&&
+    Math.abs(t.x-first.x)<=page.width*.08&&/^(?:data protection|terms (?:and|&) conditions)$/i.test(t.text.trim()));
+   const headingElement=heading&&elements.find(e=>e.kind==='text'&&e.text===heading.text&&Math.abs(e.x-heading.x/page.width)<.001&&Math.abs(e.y-heading.y/page.height)<.001);
+   const rows=headingElement?[heading!,...group]:group;
+   const x=Math.min(...rows.map(t=>t.x)),y=Math.min(...rows.map(t=>t.y));
+   const right=Math.max(...rows.map(t=>t.x+t.width)),bottom=Math.max(...rows.map(t=>t.y+t.height));
+   const merged:Element={...source[0]!,id:`terms_${elements.length}`,text:rows.map(t=>t.text.trim()).join('\n'),...normalizedBounds({x,y,width:right-x,height:bottom-y+first.height*.25},page)};
+   const remove=new Set([...source.map(e=>e!.id),...(headingElement?[headingElement.id]:[])]);
+   for(let i=elements.length-1;i>=0;i--)if(remove.has(elements[i].id))elements.splice(i,1);
+   elements.push(merged);
+  }
+ }
  let propertyName='',propertyNameConfidence=0;
  const domain=/\b(?:www\.)?([a-z][a-z0-9-]+)\.(?:com|mv|ae)\b/i.exec(all);
  const heading=textRuns.find(t=>t.y/page.height<.1&&/hotel|resort|maldives|montage|setai/i.test(t.text));
