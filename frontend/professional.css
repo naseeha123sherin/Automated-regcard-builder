@@ -1,0 +1,60 @@
+:root{font-family:Arial,"Segoe UI",sans-serif;color:#202c3c;background:#f5f7fa}
+body{background:#f5f7fa}
+button{border-color:#d7dee8;border-radius:5px;color:#23364e;box-shadow:none;transition:background-color .15s,border-color .15s}
+button:hover{background:#eef3f9;border-color:#b9c9dc}
+.app{background:#f5f7fa}
+.app aside{width:244px;background:#fff;color:#24354b;border-right:1px solid #dce3ec;padding:25px 17px 20px}
+.brand{display:block;margin:0 0 33px;padding:4px 8px 22px;border-bottom:1px solid #e3e8ef;letter-spacing:0}
+.brand img{display:block;width:194px;max-width:100%;height:auto;object-fit:contain}
+.brand-product{font-size:15px;font-weight:700;letter-spacing:0;margin-top:17px;color:#26364d}
+aside .eyebrow{color:#788698;margin:0 12px 10px;font-size:11px;letter-spacing:1px}
+.app nav{gap:3px;margin-top:0}
+.app nav button{min-height:42px;color:#41526a;border:1px solid transparent;border-radius:5px;padding:10px 12px;font-size:14px;font-weight:500}
+.app nav button svg{color:#6a7f9a}
+.app nav button.active{color:#123b83;background:#edf3fc;border-color:#dbe7f8;font-weight:700}
+.app nav button.active svg{color:#154895}
+.app nav button:hover{background:#f2f5fa;color:#193e76}
+.aside-bottom{border-top:1px solid #e3e8ef;padding:19px 8px 0;color:#708094;font-size:12px}
+.aside-bottom svg{color:#5374a2;flex:none}
+main{margin-left:244px}
+header{height:64px;padding:0 34px;border-bottom:1px solid #dce3ec;color:#526279;background:#fff;font-size:13px}
+header span{color:#9aa6b4}
+.page{max-width:1500px;padding:31px 34px 50px}
+.title{margin-bottom:23px;align-items:flex-end}
+.title .eyebrow{margin:0 0 9px;color:#667fa6;font-size:11px}
+h1{color:#1d2d44;font-size:28px;letter-spacing:-.55px;font-weight:700;margin:0 0 5px}
+h2{color:#24364d;font-size:18px;font-weight:700}
+h3{color:#28394f}
+p{color:#607087;line-height:1.5}
+.title p:not(.eyebrow){font-size:14px;margin:0}
+.panel{border:1px solid #dce3eb;border-radius:6px;padding:24px;box-shadow:0 1px 2px #172e4b08;background:#fff}
+.panel-head span{color:#7a899b}
+.dropzone{border:1.5px dashed #b9c9dc;background:#f9fbfe;border-radius:5px;min-height:212px;margin:13px 0 16px}
+.dropzone:hover{background:#f3f7fc;border-color:#7197c6}
+.dropzone svg{color:#315f9f}
+.dropzone h3{font-weight:700}
+.dropzone p{margin:2px 0 15px}
+.upload-options{gap:14px;padding:13px 0}
+.upload-options .file-label{background:#fff;border-color:#dce3eb;border-radius:5px;padding:14px;color:#34465d}
+.file-label span,.muted{color:#6c7d91}
+.upload-footer{padding-top:8px}
+.upload-footer p{max-width:650px;margin-bottom:0}
+.primary{background:#194b91;border-color:#194b91;color:#fff;font-weight:600}
+.primary:hover{background:#123b77;border-color:#123b77;color:#fff}
+.pill{background:#edf3fb;color:#315988;border:1px solid #d9e4f2;border-radius:4px;font-size:12px;font-weight:600}
+.notice{background:#edf3fa;color:#395a7d;border:1px solid #d7e4f2;border-radius:5px}
+.error{border-radius:5px}
+.metrics{border-color:#dce3eb;border-radius:6px}
+.metrics strong{color:#204d89}
+.metrics span{color:#6a7b90}
+.validation-row{border-color:#e2e8f0}
+.export-status{border-radius:6px}
+.export-status.ready{background:#eff7f2;border-color:#c5dfcf}
+.file-card>svg{color:#315f9f}
+.segmented{background:#eef2f7;border-color:#dce3eb;border-radius:5px}
+.segmented button.selected{box-shadow:0 1px 3px #18334e16}
+.form-label input,input:not([type=checkbox]):not([type=file]),textarea,select{color:#23364e;border-color:#ccd7e3;border-radius:5px}
+input[type=checkbox]{accent-color:#194b91}
+footer{border-color:#dce3eb;color:#78879a;background:#fff}
+@media(max-width:1000px){.app aside{width:208px;padding:20px 12px}main{margin-left:208px}.brand img{width:170px}.page{padding:25px}header{padding:0 25px}}
+@media(max-width:650px){.app aside{position:static;width:100%;height:auto;padding:14px 17px}.brand{display:flex;align-items:center;gap:14px;margin:0;padding:0;border:0}.brand img{width:150px}.brand-product{font-size:13px;margin:0}.app nav{margin-top:13px;gap:4px}.app nav button{min-height:39px;white-space:nowrap}.aside-bottom,aside>.eyebrow{display:none}main{margin:0}header{height:auto;padding:13px 18px;gap:8px}.page{padding:20px 16px}.title{align-items:flex-start}h1{font-size:25px}.panel{padding:18px}.dropzone{min-height:190px}}

@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 fs.mkdirSync('dist/client/assets',{recursive:true});
 fs.copyFileSync('public/favicon.svg','dist/client/favicon.svg');
+fs.copyFileSync('public/samsotech-logo.png','dist/client/samsotech-logo.png');
 fs.copyFileSync('node_modules/pdfjs-dist/build/pdf.worker.min.mjs','dist/client/assets/pdf.worker.min.mjs');
 const css=fs.readFileSync('dist/client/assets/app.css','utf8');
 fs.writeFileSync('dist/client/assets/app.css',css.replace(/@import\s*["']tailwindcss["'];?/g,''));
