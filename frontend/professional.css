@@ -3,7 +3,7 @@ body{background:#f5f7fa}
 button{border-color:#d7dee8;border-radius:5px;color:#23364e;box-shadow:none;transition:background-color .15s,border-color .15s}
 button:hover{background:#eef3f9;border-color:#b9c9dc}
 .app{background:#f5f7fa}
-.app aside{width:244px;background:#fff;color:#24354b;border-right:1px solid #dce3ec;padding:25px 17px 20px}
+.app aside{width:244px;background:#f8f7f3;color:#24354b;border-right:1px solid #e3e1d9;padding:25px 17px 20px}
 .brand{display:block;margin:0 0 33px;padding:4px 8px 22px;border-bottom:1px solid #e3e8ef;letter-spacing:0}
 .brand img{display:block;width:194px;max-width:100%;height:auto;object-fit:contain}
 .brand-product{font-size:15px;font-weight:700;letter-spacing:0;margin-top:17px;color:#26364d}
@@ -17,7 +17,7 @@ aside .eyebrow{color:#788698;margin:0 12px 10px;font-size:11px;letter-spacing:1p
 .aside-bottom{border-top:1px solid #e3e8ef;padding:19px 8px 0;color:#708094;font-size:12px}
 .aside-bottom svg{color:#5374a2;flex:none}
 main{margin-left:244px}
-header{height:64px;padding:0 34px;border-bottom:1px solid #dce3ec;color:#526279;background:#fff;font-size:13px;justify-content:flex-end}
+header{height:64px;padding:0 34px;border-bottom:1px solid #e3e1d9;color:#526279;background:#f8f7f3;font-size:13px;justify-content:flex-end}
 header span{color:#9aa6b4}
 .page{max-width:1500px;padding:31px 34px 50px}
 .title{margin-bottom:23px;align-items:flex-end}
