@@ -3,4 +3,5 @@ dist/
 generated/
 .env
 .sites-runtime/
+.vercel/
 *.log

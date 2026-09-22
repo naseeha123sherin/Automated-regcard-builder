@@ -10,6 +10,7 @@ import { generateRdl, validateRdl, lookup } from '../shared/rdl';
 import { generateFiles } from '../shared/generation';
 import { parseConfig, validateConfig } from '../shared/validation';
 import { validateUpload, ManualProvider } from '../backend/analysis';
+import { handleVercel } from '../backend/vercel';
 import { discoverRdlFields } from '../shared/rdl-discovery';
 import pairs from './reference-pairs.json';
 const service=new ReferenceTemplateService(),t=service.load();
@@ -70,4 +71,5 @@ export function invariantSuite(it:Register){
  it('Mirror flow and orientations remain independent',()=>{assert.equal(nextScreen('registration'),'terms');assert.equal(nextScreen('terms'),'signature');assert.equal(nextScreen('signature'),'checkout');const p=validProject(),s=generateRdl(p);p.orientation='landscape';assert.equal(generateRdl(p),s);});
  it('uploads reject spoofed MIME and corrupt files',()=>assert.throws(()=>validateUpload({name:'bad.pdf',mime:'application/pdf',dataUrl:'data:application/pdf;base64,YmFk'})));
  it('unconfigured vision provider never fabricates success',async()=>assert.rejects(new ManualProvider().analyzeRegistrationCard(),/not configured/));
+ it('Vercel endpoint serves status without exposing credentials and rejects cross-origin posts',async()=>{const status=await handleVercel('/api/status',new Request('https://example.vercel.app/api/status'));assert.equal(status.status,200);const payload=await status.json();assert.equal(typeof payload.configured,'boolean');assert(!JSON.stringify(payload).includes('OPENAI_API_KEY'));const blocked=await handleVercel('/api/analyze',new Request('https://example.vercel.app/api/analyze',{method:'POST',headers:{Origin:'https://other.example','Content-Type':'application/json'},body:'{}'}));assert.equal(blocked.status,403);});
 }

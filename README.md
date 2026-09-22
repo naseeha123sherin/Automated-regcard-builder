@@ -100,6 +100,12 @@ Use Save/Load on this device, opt-in auto-save and export/import `project.json`.
 
 ## Deployment
 
+### Vercel
+
+This repository also includes `vercel.json` and four `/api` functions for a Vite deployment. Import the GitHub repository into Vercel using the repository root; the configured build writes the website to `dist/client`. Keep the repository private and enable Vercel Authentication for **All Deployments** before handling any guest documents. Set `ANALYSIS_PROVIDER=none` unless you deliberately configure a server-side `OPENAI_API_KEY` and approve sending documents to that provider. Do not use a `VITE_` prefix for secrets.
+
+Vercel Functions have a 4.5 MB request-body limit, so optional server-side PDF/vision analysis accepts about 3 MB of original file content after base64 encoding. Local PDF analysis and the RDL/JSON editing workflow remain client-side. Test the deployed endpoints and a complete download flow before using the Vercel deployment operationally.
+
 The Worker entrypoint is `backend/worker.ts`, compiled to `dist/server/index.js`, exporting `fetch(request, env)`. Static assets are `dist/client`, and `ASSETS` is the asset binding. The same API/generation services back Express and Worker deployments. Sites packages the compiled worker/assets with `.openai/hosting.json`. Keep the site owner-private for hotel engineering work. Configure hosted secrets separately; local `.env` is never published.
 
 For another Cloudflare deployment configure its asset binding and Workers entrypoint, set `ANALYSIS_PROVIDER`/`OPENAI_MODEL` as variables and `OPENAI_API_KEY` as a secret. Never expose a credentialed analysis API publicly without authentication, rate limiting and budget controls. Express has Helmet and API rate limiting; the hosted private Worker relies on platform access controls. Add durable per-account quota controls before sharing broadly.
