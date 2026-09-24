@@ -19,5 +19,6 @@ export function generateFiles(p:Project,t:Templates){
   {key:'checkin',name:`${prefix?prefix+'_':''}checkin_terms.json`,content:checkin,mime:'application/json',valid:!!checkin,issues:checkinIssues,status:'Ready'},
   {key:'checkout',name:`${prefix?prefix+'_':''}checkout_terms.json`,content:checkout,mime:'application/json',valid:!!checkout,issues:checkoutIssues,status:'Ready'}
  ];
- const issues=files.flatMap(f=>f.issues);return {rdl,issues,valid:files.every(f=>f.valid),files};
+ const selected=p.systemMode==='kiosk'?files.slice(0,1):files;
+ const issues=selected.flatMap(f=>f.issues);return {rdl,issues,valid:selected.every(f=>f.valid),files:selected};
 }
